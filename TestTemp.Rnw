@@ -1,0 +1,744 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage{booktabs, threeparttable, stackengine}
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\setstackEOL{\#}
+\setstackgap{L}{12pt}
+\usepackage{paralist}
+\usepackage{pdflscape}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage {setspace}
+\graphicspath{ {Images/} }
+\onehalfspacing
+\title{Impact of Tele-Education on SSLC Results}
+\author{}
+\date{}
+
+\begin{document}  
+\SweaveOpts{concordance=TRUE}
+\maketitle
+
+\begin{abstract}
+
+There is mixed evidence about the exact role of quality of teaching on education outcomes. Also an important challenge before policy makers is to devise a mechanism to ensure that good quality teaching input is available for students in remote and under-developed regions. We use randomized evaluation to show that quality teaching input does make a significant impact on student achievement in standardized test scores. We also believe that our experiment, by reaching out to 1000 schools spread across the State of Karnataka provides a replicable model for conducting large scale sate-wide programs to address the educational needs of students in rural areas. 
+
+\end{abstract}
+
+\section {Introduction}
+The Millennium Development Goals have targetted universal primary education for all children in the age-group 6-14 by the year 2015. In pursuit of this governments have been in an over-drive to get the children in school. However, not much is being said about the quality of education that is being imparted once the child enrols in a school. Thankfully in India the Annual Status of Education Report has been a conscience keeper in this matter. We show that providing quality teaching input by making effective use of ICT can not only improve the literacy and numeracy skills but also improve students' performance on standardized tests.
+
+%Despite a number of studies and experiments, getting a hold on the education production function remains a distant dream. In the last two decades or so the use of ICT enabled tools have added a new dimension to the education production function. 
+
+%With a lot of noise building around the use of ICT in achieving development goals from the media, the scientific establishment and the IT industry, there is constant pressure on governments to show that it is using innovative ICT tools for development purpose. This normally translates into large budgetary allocations, purchases of hardware and software, creation of posts for computer teachers and other administrative machinery. However, studies about the effectiveness of these tools and the programs centered around these tools in achieving their objective in terms of educational achievement are rare. There is also very little clarity on form and methods in which ICT enabled learning should be implemented. Some major methods such as distribution of computers, CDs with educational content, etc. either do not seem to work or do not work at larger scale.
+\paragraph*{}  We conduct a Randomized Control Trial (RCT) experiment in 1000 rural government and government aided  schools in Karnataka. We use ICT enabled tools to deliver quality educational input to these students. This paper is a preliminary evaluation of the program after three months of intervention. We study the impact of this intervention on the performance of students in Secondary School Leaving Certificate (SSLC) Exams. These are common exams conducted at State level by the Karnataka Secondary Education Examination Board after 10 years of school education. The preliminary evaluation of this program done in this paper  after three months of intervention shows non-significant but positive impact on the students' performance at the SSLC exams.
+
+\section {Theoretical Background and Literature}
+
+Literature on the economics of education spans a vast canvas. But broadly these can be divided in two streams. A part of literature investigates returns to education. With \citet{becker1964human} as a major starting point, this stream looks into several versions of the Mincer equation. An excellent review of this line can be found in \citet{heckman2006earnings}. This view primarily looks at the intrumental aspect of education. \citet{bowles2001determinants} from behavioural camp question the primacy accorded to formal classroom education in determining earning potential. While they may have differences of opinion as to what exactly constitutes education, the focus remains on determining the link between education and economic outcomes like earnings. The Coleman report \nocite{coleman1966equality} gave rise to another important stream in education economics - the question of efficiency of production function. Though this issue was not the main focus of \citet{coleman1966equality} Governments, as also the tax paying public, were interested in what gave them the biggest bang for their bucks and what policy measures within the education sector can give maximum results in terms of students achievements. As such the efficiency of production function came under a scanner. While these two streams of research are related, it is often useful to look at them independently to avoid certain ideologically murky issues about ends of education.
+
+\paragraph*{} The present paper falls into the second stream of literature mentioned above. We understand that there are valid and important questions about what can be considered as measure of education outcome. The present paper seeks to stay clear of these issues and takes performance on standard tests as a measure of education outcome. We have conducted pre and post intervention tests to determine the impact of the intervention, the results of which are being evaluated. However, especially in the Indian scenario, we feel that the impact of intervention on SSLC performance is equally important as this performance serves as an important criteria for determining future career options for a student. Having accepted the SSLC performance as an evaluation criteria, we ask the question - to what extent does quality of teaching impact students' performance in these exams? We look at one possible scalable solution that can improve the quality of education, especially for students in remote rural areas using ICT and evaluate the impact of this specific solution. 
+
+% Are we pitching this as testing impact of change in quality of teaching input or testing impact of additional teaching input. We do not have any literature on measure of quality of teaching. We also should mention that there is a secondary impact of the tele-education improving the teaching quality in regular classes. Hence this cant be considered purely as additional input either.%
+
+\subsection {Educational Input - Achievment Relation}
+
+We begin with the basic model proposed by \citet{glewwe2006schools} for describing the production function for learning.
+\begin{equation}
+A = f(S, Q, C, H, I)\label{eq:1}
+\end{equation}
+Where $S$ is the number of years of schooling, $Q$ is the vector of variables determining school quality and $I$ is the investment done by parents in the child's education. Both these are ednogenously determined. $C$, the genetic child characteristics and  $H$, the Household characteristics are exogenous. Cost of schooling ($P$) influences $S$ and $I$ as -
+\begin{equation}\label{eq:2}
+S = g(Q, C, H, P)
+\end{equation}
+\begin{equation}\label{eq:3}
+I = l(Q, C, H, P)
+\end{equation}
+
+Substituting equation (\ref{eq:2}) and (\ref{eq:3}) in (\ref{eq:1}) we get the reduced form equation -
+\begin{equation}\label{eq:4}
+A = h(Q, C, H, P)
+\end{equation}
+
+We use the RCT setting to estimate the impact of changes in $Q$ on $A$. As \citet{glewwe2006schools} point out, the estimation of equation xxxx gives the total derivative of $A$ with respect to $Q$ after taking into account adjustments made by households in $I$ and $S$ as a result of the changed $Q$. Thus in our case, an increase in quality of input provided in government schools may lead households to reduce expenses on additional tuitions ($I$) or may encourage parents to continue education of their children for a few more years ($S$). Due to lack of data and measurement issues in some of these variables, we do not get into the problem of measuring the overall welfare impact, but limit our study to the impact on impact of the RCT intervention on outcome variable i.e. Achievement in form of Test scores.
+
+\subsection{School Quality}
+One of the points that \citet{coleman1966eduation} tried to emphaisze was that school choice made a diffrence on student achievement. Subsequent studies triggered by need to understand the education production function emphasized various aspects of School environment such as physical infrastructure, quality of teachrs, pedagogy, teaching aids and also the organizational and incentive structures of schools. Evaluations of the Colombian program, Programa de Ampliacion de Codertura de la Educacion Secundaria (PACES) by \citet{angrist2002vouchers} and \citet{angrist2006long} show that school quality plays a significant role in determning student achievements. \citet{bettinger2010educational} evaluation of the same project further suggest that better schools offer something more than just better peers. However, several other studies like \citet{lucas2011elite} and \citet{zhang2009magnet} as cited in \citet{banerjee2013expanding}, find no significant impact of school quality on educational outcomes.
+
+\subsection{Role of Teachers}
+
+\paragraph*{} An important element of School Quality is the quality of teaching staff. \citet{kremer2009improving}, \citet{glewwe2011school} and more recently \citet{banerjee2013expanding} provide good survey of research on impact of various aspects of schooling and school quality on student achievements. \citet{glewwe2011school} study 79 papers published between 1990 to 2010 addressing the issue of linkage between school resources and educational outcomes in developing countries. The more popular topics of study have been Teacher education levels and experience (addressed by 44 papers), Pupil-teacher ratio (addressed by 29 papers) and Provision of Textbooks / Workbooks (addressed by 21 papers). 
+
+\paragraph*{} Clearly the role and quality of teachers has been an area of interest and concern at least in the developing countries. But conclusions on the impact of teachers on student achievement are mixed. For example, the most studied aspect of role of Teachers in the 79 papers reviewed by \citet{glewwe2011school} is the "education level of the teacher". The 24 out of the 79 papers reviewed contain 72 different estimates of this variable. Only 24 of these estimates show positive and significant results while 48 estimates (about 66\%) show insignificant or negative and significant results. The authors further take a set of 43 papers which they call "High Quality Studies". The situation in these studies gets even worse. 6 out of 43 papers estimate the impact of "teachers' education level" on student achievements. Out of 13 different estimates, 2 show positive significant results while the remaining 11 nonsignificant or negative significant results. Other aspects of the role of teachers in increasing student achievement such as experience and training have similar mixed results. Teachers' knowledge, though covered by lesser number of papers give a more consitently positive impact on student achievement. (88\% in the group of 79 papers and 100\% in the group of 43 papers).
+
+\paragraph*{}There are very few studies that use RCT design on undertanding the role of teachers. Among the 13 studies cited by \citet{glewwe2011school} that used RCT design only two studies have attempted to address this aspect. \citet{banerjee2007remedying} found significant positive effects of providing an additional teacher (Balsakhi) in an RCT set-up. Similarly \citet{muralidharan2013contract} found significant positive impact of providing an extra contract teacher on student performance.
+
+\subsection{Policy Concern}
+
+The studies cited above do indicate, albiet with some ambiguity, that Teachers play an important role in increaseing student performance in standard tests. However, from a policy perspective there are understandably a few concerns apart from the obvious statistical ambiguity of the direction and significance of the results. Firstly, the more convincing results have come from RCT experiments. These experiments have been conducted with help of NGOs, in limited number of schools and with teachers working at paltry remuneration (\citet{banerjee2007remedying} used volunteers in the neighbourhood at a salary of Rs. 500 - 750 or USD 10-15 at the then prevailing rate of exchange). Similarly, experiments conducted by \citet{muralidharan2013contract} employed contract teachers in addition to the regular teachers at a salary of less than one-fifth of the average salary of government teachers. The scalability of such experiments is therefore doubtful. Being part of a closely monitored study has its own behavioural impact on performance of the participants. Especially, in Indian scenario where a "permanent" job of  teacher in government school is in high demand, and where there is a strong and persistent demand from the existing contract teachers to be made "permanent", (fir instance the recent agitation in Bihar by Bihar Rajya Niyojit Shikshak Sangh Morcha \citet{contractteachers}) asking for large scale employment of contract teachers at low salaries seems difficult. \citet{kingdon2001political} brings out the political economy of the education sector and the way rent-seeking are generated and protected by the teachers already in employment. Further, as \citet{banerjee2010pitfalls} have themselves shown that community participation in education management is extremely difficult to achieve.
+
+\paragraph*{} A second issue very successfully brought out by \citet{kremer2005teacher}, \citet{chaudhury2006missing} and more recently by \citet{muralidharan2014fiscal} is that of teacher absenteeism. In India, the authors report upto 25\% rate for teacher absenteeism. \citet{chaudhury2006missing} further point out that in Indian context only 45\% of teachers assigned to schools are engaged in teaching activity at any given point of time. The impact is further accentuated on account of multi-grade classrooms where absence of a single teacher impacts more than one class. Thus, even though we conclude that teacher quality has significant positive impact on education outcomes, a viable solution from policy perspective is yet to emerge.
+
+\subsection{Computer Aided Learning}
+
+In the recent past MOOCs have emerged as an important source of additional input in higher education especially for students who have temporal or geographical difficulties in accessing good quality higher education content from across the world. In the context of schools in India, lack of internet connectivity, especially in rural areas makes MOOCs a difficult proposition. Use of ICT in school education so far have been limited to providing computers and teaching children some computer skills. It has taken a while for educators to realise that availability of computers and internet connectivity open up a wide range of pedagogical tools that can be integrated into teaching of conventional subjects such as languages, science, social science, etc. Nevertheless, ICT enthusiasts have been quick to pronounce ICT as a panacea for almost all ailments in the school education system.
+
+\paragraph*{}Unfortunately as noted by \citet{barrera2009use}, well designed studies on impact of computer usage in school education are few. Notable exceptions are studies by \citet{angrist2002new} and \citet{linden2003computer} that use an RCT design to find impact of use of computers in classrooms in Israel and India respectively. More recently \citet{barrera2009use} itself is an excelent study of use of computers through the Colombian "Computers for Education" program. As is always the case in this field, the evidence is mixed. While \citet{angrist2002new} find little or no evidence of increase in test scores on account of computer-aided instruction. The program in Israel involved use of 35,000 computers across 905 schools. On the other hand \citet{linden2003computer} find significant positive impact of use of computers in 55 schools in Vadodara, India. Similarly \citet{barrera2009use} find no impact of use of computers on student performance in 97 schools in Colombia. The authors also note that only 42\% os teachers from treatment schools had used a computer in class in the week before the survey. An important distinction between the \citet{linden2003computer} study and the other two studies mentioned above by \citet{angrist2002new} and \citet{barrera2009use} is the fact that while the study by \citet{linden2003computer} had taken help of Pratham, an NGO with active grassroot level presence for more than 2 decades among government schools in India, in conducting the program, the other two programs in Israel and Colombia were run entirely through government machinery and the University. This further goes on to emphasize the point made above that while selective and focussed experiments may show encouraging results, translating the design into state-wide programs and policies present an independent set of challenges.
+
+\section{Context of Present Study}
+
+This is where the present study hopes to make a contribution. We aim to address three closely-interelated issues - (a) Study of provision of high quality teaching input and its impact on test scores (b) Optimal technology based solution for such an intervention (c) Potential scalability of such a program to cover all schools in the State with minimum demands on the existing State machinery so as to make it administratively viable and politically credible development policy option. This would include other aspects of scalability such as possibility of expanding PTR, conducting other special training programs using the ICT infrastructure created.
+
+\subsection{School Education in Karnataka}
+
+The study was conducted in government and government aided schools in Karnataka State of India. Karnataka is among the more developed States in the Indian Union. The State Per Capita income in FY 2013-14 was about 14\% higher than the national average. The State has a literacy rate of 75.4\% compared to the national rate of 73\%. It performed better than National Average on 4 out of 5 Human Developement Indicators and equal on the fifth. The State scored 0.605 on Education Index as compared to the national score of 0.568 (score of 1 indicating best performance) as per Economic Survey of India [2014-15]. \nocite{ecosurvey2015} However, the quality of school education remains an area of concern. As is being repeatedly pointed out by the Annual Status of Education Reports (ASER) published by Pratham for more than a decade now, there is a huge gap between the educational abilities achieved by children appropriate for the grade that they are enrolled in. Thus for Karnataka, as per \citet{pratham2014} 30\% of children enrolled in class 8 did not have reading ability expected of class 2 student and 60\% could not do a division. While the mid-day meals have brought children to school with enrolment ratios touching more than 98\%, the kind of value addition that the school provides in terms of educational inputs still remains far from satisfactory.
+
+\paragraph*{}Overall trends from \citet{pratham2014} show that the learning gap between Government and Private Schools has been widening over the years. (refer Tables \ref{tb:1} and \ref{tb:2})
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+& \multicolumn{3}{C{5cm}|}{\% of children in Std IV who can read at least Std I level Text} & \multicolumn{3}{C{5cm}|}{\% of children in Std V who can read at least Std II level Text}\\
+\hline
+Year & Govt. & Pvt. & Govt and Pvt. & Govt. & Pvt. & Govt and Pvt.\\
+\hline
+2010 & 58.5 & 67.2 & 60.1 & 42.9 & 55.1 & 45.1\\
+\hline
+2011 & 61.7 & 67.6 & 62.8 & 41.5 & 57.4 & 44.3\\
+\hline
+2012 & 59.8 & 71.7 & 62.3 & 47.2 & 54.6 & 48.5\\
+\hline
+2013 & 60.0 & 62.8 & 60.6 & 41.3 & 45.8 & 42.2\\
+\hline
+2014 & 55.3 & 63.0 & 57.2 & 45.7 & 53.5 & 47.3\\
+\hline
+\end{tabular}
+\caption{Trends over time \% Children in Std IV and V at different READING levels by school type 2010-2014}
+\label{tb:1}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+& \multicolumn{3}{C{5cm}|}{\% of children in Std IV who can do at least subtraction} & \multicolumn{3}{C{5cm}|}{\% of children in Std V who can do division}\\
+\hline
+Year & Govt. & Pvt. & Govt and Pvt. & Govt. & Pvt. & Govt and Pvt.\\
+\hline
+2010 &  42.2 & 54.9 & 44.5 & 18.7 & 26.5 & 20.1\\
+\hline
+2011 & 46.4 & 57.2 & 48.3 & 17.6 & 29.6 & 19.7\\
+\hline
+2012 & 48.9 & 66.4 & 52.5 & 17.4 & 31.3 & 19.9\\
+\hline
+2013 & 44.5 & 58.6 & 47.5 & 16.4 & 25.3 & 18.2\\
+\hline
+2014 & 35.7 & 53.3 & 40.1 & 16.7 & 33.2 & 20.2\\
+\hline
+\end{tabular}
+\caption{Trends over time \% Children in Std IV and V at different ARITHMETIC levels by school type 2010-2014}
+\label{tb:2}
+\end{table}
+
+The report also notes that if household and parental characteristics are controlled for, the comparison between government and private schools is infact reversed i.e. Government school students perform better than private school students. This points to a major shift in the demographic characteristics of students coming to the Government Schools. Increasingly the affluent households are moving children away from the government schools to private schools wherever the option is available. What is left in government schools is children from socially and economically disadvanted sections of the society. The impact is two-fold. Firstly, these children receive much lesser support in terms of family investments in education such as additional personal coaching, learning aids, etc. The only teaching input that the children get is from what is imparted by the teacher in the school. The annual grant from the government for Teaching and Learning Material (TLM) is Rs. 500 per Teacher per year (\citet{pratham2014}). One wonders what additional input a teacher would be able to provide with this amount. A second implication is that one finds increasing number of Government schools with very few number of students enrolled. According to the data provided by the State Department of Education, out of more than 75,000 schools in the State, more than 6500 schools had total enrolment of less than 10 in AY 2013-14. Such a scenariois sure to adversely hit the morale and motivation levels of the teachers as well as the administrative machinery. Often such scenarios are met with easier solutions such as reduction in funds, closing down of schools, etc.
+
+\subsection {The Tele-Education Project}
+
+The objective of the Tele-education Project is to give access to quality teaching to students in Government and Government aided schools in the rural areas of Karnataka making effective use of ICT. This teaching is expected to supplement the usual classroom teaching conducted by the regular school teacher. It is expected that children coming from economically and socially disadvantaged sections of the society who otherwise are not able to get access to private tuitions and additional learning materials would benefit from such an input. Also, while this program is not designed to replace the teachers, it is expected that adverse impact on student learning due to teacher absenteeism and non-availability of qualified teachers in the interior and less developed regions would to some extent be mitigated on account of such an input.
+
+\section{Experiment Design}
+
+The project is being implemented in a Public-Private-Partnership between Department of Education, Government of Karnataka and Indian Institute of Management, Bangalore (IIMB). IIMB has in-turn taken help from Private sector companies for implementation of various aspects of the project - (a) Gumbi Software - for software and hardware provision, maintenance and management (b) Edutel - for providing education related content including delivery of lectures and (c)Opel - for data collection and last-mile implementation. The project is being funded by the State Department of Education for a period of five years after which all the assets created under the project and its management would be transferred to the Government. The initial pilot of the Project was conducted in 14 schools in Gubbi Taluka, Tumkur District in the Academic Year (AY) 2011-12. After analysing results at the pilot stage it was decided to expand the Project to 1000 school in the AY 2014-15. It is expected that once the project stabilizes at this level, about 6000 schools will be added over the next 4 year period after which the government may take a decision to expand the project to other schools in the State.
+
+
+\subsection{Treatment}
+The treatment involves delivery of qulaity teaching input via V-SAT connectivity for Class 5th to Class 10th students. Lectures are delivered as per a detailed topic-wise time-table provided to the school at the beginning of every academic year. Each subject of each class has 2 lectures per week and are held during the normal school hours. The lectures cover Karnataka State Board Syllabus for English, Science and Maths in Kannada medium. The aim of the Treatment as stated earlier is to fill in the quality gap in teaching. Thus, the project employs well-trained teachers and research teams that have access to wide range of knowledge resources including web-based resources and expertise in content delivery software. Content for each lecture is generated by a team of 5 members that include subject researchers, experienced teachers and software designers. Approximately 200 manhours of efforts are spent in generating 40 minutes of content. The lectures are then delivered in a studio based in Bangalore and telecast live to Treatment schools across the state using V-SAT connectivity. Centralized research and delivery ensures that lectures are of good quality. Lectures are designed keeping in mind the class and age appropriateness of the content taught. Number of do-it-yourself exercises and class assignments are suggested on the topic being covered. Care is taken to ensure that the examples and exercises are such that children from rural areas across the state can relate to. Lectures are made interesting by use of multimedia content, animation and other teaching aids. 
+
+\paragraph*{}Each lecture is of 40 minute duration. At the end of every lecture there is a 10 minute interactive session where students can ask questions on the topic covered in the lecture. The Project employs trained moderators in every Taluka who answer these questions. The questions are asked over a video chat using broad-band connectivity wherever availabe or through a voice call.
+
+\subsection{Evaluation}
+In each of the three subjects covered under the Project, evaluation is done by way of a standardized test covering the syllabus that the student in various classes are expected to know at the time of test. Students of each class and each subject appear for a 20 question multiple choice test designed to test the student on four attributes - (a) Understanding (b) Skill (c) Knowledge (d) Application. A test was conducted in both Control and Treatment Schools at the beginning of the intervention. Subsequent tests are being conducted at the beginning and end of every academic year. Such scheduling of tests also helps to account for impact of attrition and new entrants during estimation.
+
+\subsection{Randomization}
+The selection was done using Multistage-Stratified-Random Sampling method. The focus was on the selecting schools in the economically backward regions of the State. We therefore used classification done by the High Power Committee on Redressal of Regional Imbalances (popularly known as the Nanjundappa Committee).\nocite{nanjudappa} The Nanjundappa Committee Report classifies Talukas in Karnataka into 4 categories (Relatively Developed, Backward, More backward and Most Backward) based on various development criteria. A district development score was computed using the development levels of Talukas in the district as - Relatively Developed = 1, Backward = 0.75, More Backward = 0.5 and Others = 0. 
+
+\paragraph*{}It was decided that 4 Talukas would be randomly selected from each selected district. Out of these two Talukas would be randomly assigned to Treatment and two Talukas to Control. The aim was to cover all government and government aided schools in the selected Talukas that qualify the criteria of having minimum level of facilities required to run a Tele-education class i.e. (a) Closed classroom in good condition with adequate security for the equipment (b) Working electricity connection (c) Minimum class size of xxxxxxx in Class xxxxx. This procedure for selection of Talukas and Schools was followed starting from the District with lowest development score and moving on in ascending order till 1000 schools were selected in the Treatment group. Eventually 36 Talukas in 18 districts were covered under the Treatment group.
+
+\subsection{Use of ICT}
+The choice of delivery mechanism is motivated by some learnings from past experiences of attempts to use ICT in schools. As noted by \citet{barrera2009use} giving computers to schools is not one of the best options. Anectodal evidence from India suggests that such programs are often badly managed. During field visits for the Project it was noticed that in many schools while CPUs were provided, there were no monitors and complete working set of units were rare. Availability of internet connectivity in remote rural areas was also a concern. It was, therefore decided to make use of Hybrid technology integrating VSAT and terrestrial broadband model. This enabled two-way video and two-way audio along with data transfer system by using Satellite for forward path (in broadcasting / multicasting mode) while for student interaction i.e. for reverse communication, it uses terrestrial mode utilizing broadband. Hence complete multipoint two-way interaction is possible. This Hybrid model solved some of the constraints of the existing technologies for Tele-education i.e. through VSAT only and through Broadband only.  VSAT only model faces problems such as absence of any interactive facilities, high bandwidth cost, higher latency, expensive equipment, no backup on failure whereas, terrestrial model faces problems like bandwidth bottleneck, unavailability of multicast, distance from exchange, no backup on failure, server intensive etc. All these shortcomings have been overcome by Hybrid model at a much lower cost.
+
+\paragraph*{}The costs could be kept to minimum as the content generation and delivery was centralised thus making optimal use of teaching expertise and satellite bandwidth. Every school is given a receiving equipment comprising of a VSAT receiver, laptop, projector and screen along with supporting modems, connectors, etc. Power requirement is taken care of by a UPS and Solar back-up in addition to the regular electricity supply. Complexity in operating the system at school level is kept to a bare minimum so that any teacher would be able to swtich on the system. Every school is given a smart-phone and broadband connectivity. This is used by students to ask questions at the end of every session with assistance from the teacher or Voluntary School Co-ordinator (VSC) who is a representative of the Project in every school and trained in the use, operation and minor maintenance of the equipment. The mobile is also used by the VSC or the teacher present to send system status to the central server.
+
+\paragraph*{}If a system is to be implemented on a large scale, it is essential to have inbuilt monitoring and supervision mechanisms. Both, automated as well as manual supervision mechanisms were introduced. The checks are done at 3 levels. Firstly, the system itself generates status reports and sends it to the central server every 15 minutes when the classes are running. Thus we know for all the 1000 schools if the system was switched on, operating and receiving signal during the classes at every 15 minute interval. This data is monitored and wherever required corrective action is taken if the system is found not running. A second level of check is through the mobiles provided to every school. These mobiles have an android based application through which the VSC or the teacher is suppossed to send the details of the class run. Each class transmitted to each school has a randomly generated UID which the VSC is expected to send via the Android app. This gives a second level of check as to whether the class was actually running in the schools. A third level of check is performed by the Field officers who keep visiting the schools from time to time. The Project has 6 field officers covering 18 districts where the project is operational.
+
+\subsection{Organization}
+Every school has a VSC appointed by the project who is responsible for operating the system on a daily basis and communicating with the Project personnel at Taluka level. At Taluka level the Project has a Nodal Officer (NO) who is responsible for the technical maintenance of the system and ensures that the down-times are minimized. Each Taluka also has a Teacher In-charge (TI) who is an ex-teacher with about 5 years experience. The TI in addition to supervising the working of VSCs and NOs is also responsible for co-ordinating with local education department officials and senior teachers and arrange for Moderation at local level. It is expected that over a period the work of the VSCs is taken up by individual subject teachers since it is merely a matter of switching the system on. The job of moderation and content creation too is expected to be taken up by senior teachers at Taluka and State levels respectively. The Project personnel then can limit their role to providing technical assistance. At present this structure is also used to collect data available at school level pertaining to student performance, socio-economic data on the students available with the schools and educational qualifiations and experience of teachers.
+
+\paragraph*{}Thus, it can be seen that one of the major objectives while designing the intervention has been to create an expandable and replicable model for policy implementation. We think that this is an important aspect which most other action research projects miss out on and is an important and unique contribution.
+
+
+\section {Estimation and Results}
+
+
+
+<<echo=FALSE, eval=TRUE>>=
+# LIBRARIES AND IMPORTED FILES
+library(sm)
+library(schoRsch)
+library(xtable)
+library(texreg)
+library(quantreg)
+library(stargazer)
+CTSSLC15 <- read.csv("CTSSLC15.csv")
+CTSSLC14 <- read.csv("CTSSLC14.csv")
+CTSSLCinSSA<- read.csv("CTSSLCinSSA.csv")
+SSA<-read.csv("NEWSSAT.csv")
+
+# EXTRACTING CONTROL AND TREATMENT SCHOOLS FOR AY 2013-14 FROM SSA DATA
+SSA201314<-SSA[SSA$AC_YEAR =="2013-14",]
+AbSSA<-SSA201314[c(1:63, 79:80, 83:87, 90:97, 100:122, 131:142, 151:162, 171:182, 191:202, 211:222, 225, 226, 234:240, 276:278)]
+C<-read.csv("Control School Final List.csv")
+T<-read.csv("Treatment School Final List.csv")
+TRT<-subset(AbSSA, SCHCD %in% T$SCHCD)
+CRT<-subset(AbSSA, SCHCD %in% C$SCHCD)
+CRT<-cbind(dummyt=0, CRT)
+TRT<-cbind(dummyt=1, TRT)
+CTRT<-rbind(CRT, TRT)
+SCH_CATDESC<-as.data.frame(unique(CTRT$SCHCAT_DESC))
+CTRTwith100<- CTRT[CTRT$SCHCAT_DESC==SCH_CATDESC[1,], ]
+CTRTwith101<- CTRT[CTRT$SCHCAT_DESC==SCH_CATDESC[3,], ]
+CTRTwith102<- CTRT[CTRT$SCHCAT_DESC==SCH_CATDESC[4,], ]
+CTRTwith103<- CTRT[CTRT$SCHCAT_DESC==SCH_CATDESC[5,], ]
+CTRTwith104<- CTRT[CTRT$SCHCAT_DESC==SCH_CATDESC[6,], ]
+CTRTwith10<-rbind(CTRTwith100, CTRTwith101, CTRTwith102, CTRTwith103, CTRTwith104)
+CTRTwith10 <- CTRTwith10[complete.cases(CTRTwith10$SCHCAT_DESC),]
+Counts1<-as.data.frame(table(CTRTwith10$dummyt))
+#write.csv(CTRT, "Control Treatment SSA Data 2013-14.csv")
+#write.csv(CTRTwith10, "CTRTwith10.csv")
+
+
+CTSSLCinSSA$DISTNAME.x[CTSSLCinSSA$DISTNAME.x== "RAMANAGARA"]<-"BANGALORE RURAL"
+CTSSLCinSSA$DISTNAME.x[CTSSLCinSSA$DISTNAME.x== "CHIKKABALLAPURA"]<-"KOLAR"
+CTSSLCinSSA$DISTNAME.x[CTSSLCinSSA$DISTNAME.x== "TUMKUR MADHUGIRI"]<-"TUMKUR"
+CTSSLCinSSA$DISTNAME.x[CTSSLCinSSA$DISTNAME.x== "UTTARA KANNADA SIRSI"]<-"UTTARA KANNADA"
+CTSSLCinSSA$DISTNAME.x[CTSSLCinSSA$DISTNAME.x== "YADAGIRI"]<-"GULBARGA"
+CTSSLCinSSA$DISTNAME.x[CTSSLCinSSA$DISTNAME.x== "BELGAUM CHIKKODI"]<-"BELGAUM"
+@
+
+
+
+<<echo=FALSE, eval=TRUE, results=tex>>=
+#CALCULATING NEW VARIABLES FROM SSA DATA FOR COMPARISON
+
+CTSSLCinSSA$TOTAL_ENROLMENT <- CTSSLCinSSA$C1B + CTSSLCinSSA$C1G + CTSSLCinSSA$C2B + CTSSLCinSSA$C2G + CTSSLCinSSA$C3B + CTSSLCinSSA$C3G + CTSSLCinSSA$C4B+ CTSSLCinSSA$C4G + CTSSLCinSSA$C5B + CTSSLCinSSA$C5G + CTSSLCinSSA$C6B + CTSSLCinSSA$C6G + CTSSLCinSSA$C7B + CTSSLCinSSA$C7G + CTSSLCinSSA$C8B + CTSSLCinSSA$C8G + CTSSLCinSSA$C9B + CTSSLCinSSA$C9G + CTSSLCinSSA$C10B + CTSSLCinSSA$C10G
+
+CTSSLCinSSA$TOTAL_ENROLMENT5to10 <- CTSSLCinSSA$C5B + CTSSLCinSSA$C5G + CTSSLCinSSA$C6B + CTSSLCinSSA$C6G + CTSSLCinSSA$C7B + CTSSLCinSSA$C7G + CTSSLCinSSA$C8B + CTSSLCinSSA$C8G + CTSSLCinSSA$C9B + CTSSLCinSSA$C9G + CTSSLCinSSA$C10B + CTSSLCinSSA$C10G
+
+CTSSLCinSSA$Total5to10Next <- CTSSLCinSSA$ALLC5B + CTSSLCinSSA$ALLC5G + CTSSLCinSSA$ALLC6B + CTSSLCinSSA$ALLC6G + CTSSLCinSSA$ALLC7B + CTSSLCinSSA$ALLC7G + CTSSLCinSSA$ALLC8B + CTSSLCinSSA$ALLC8G + CTSSLCinSSA$ALLC9B + CTSSLCinSSA$ALLC9G + CTSSLCinSSA$ALLC10B + CTSSLCinSSA$ALLC10G
+
+CTSSLCinSSA$Girls5to10 <- CTSSLCinSSA$C5G + CTSSLCinSSA$C6G + CTSSLCinSSA$C7G +  CTSSLCinSSA$C8G + CTSSLCinSSA$C9G + CTSSLCinSSA$C10G
+
+CTSSLCinSSA$TotalSC5to10 <- CTSSLCinSSA$SCC5B + CTSSLCinSSA$SCC5G + CTSSLCinSSA$SCC6B + CTSSLCinSSA$SCC6G + CTSSLCinSSA$SCC7B + CTSSLCinSSA$SCC7G + CTSSLCinSSA$SCC8B + CTSSLCinSSA$SCC8G + CTSSLCinSSA$SCC9B + CTSSLCinSSA$SCC9G + CTSSLCinSSA$SCC10B + CTSSLCinSSA$SCC10G
+
+CTSSLCinSSA$TotalST5to10 <- CTSSLCinSSA$STC5B + CTSSLCinSSA$STC5G + CTSSLCinSSA$STC6B + CTSSLCinSSA$STC6G + CTSSLCinSSA$STC7B + CTSSLCinSSA$STC7G + CTSSLCinSSA$STC8B + CTSSLCinSSA$STC8G + CTSSLCinSSA$STC9B + CTSSLCinSSA$STC9G + CTSSLCinSSA$STC10B + CTSSLCinSSA$STC10G
+
+CTSSLCinSSA$TotalOBC5to10 <- CTSSLCinSSA$OBCC5B + CTSSLCinSSA$OBCC5G + CTSSLCinSSA$OBCC6B + CTSSLCinSSA$OBCC6G + CTSSLCinSSA$OBCC7B + CTSSLCinSSA$OBCC7G + CTSSLCinSSA$OBCC8B + CTSSLCinSSA$OBCC8G + CTSSLCinSSA$OBCC9B + CTSSLCinSSA$OBCC9G + CTSSLCinSSA$OBCC10B + CTSSLCinSSA$OBCC10G
+
+CTSSLCinSSA$TotalMUS5to10 <- CTSSLCinSSA$MUSLIMC5B + CTSSLCinSSA$MUSLIMC5G + CTSSLCinSSA$MUSLIMC6B + CTSSLCinSSA$MUSLIMC6G + CTSSLCinSSA$MUSLIMC7B + CTSSLCinSSA$MUSLIMC7G + CTSSLCinSSA$MUSLIMC8B + CTSSLCinSSA$MUSLIMC8G + CTSSLCinSSA$MUSLIMC9B + CTSSLCinSSA$MUSLIMC9G + CTSSLCinSSA$MUSLIMC10B + CTSSLCinSSA$MUSLIMC10G
+
+
+CTSSLCinSSA$PTR <- CTSSLCinSSA[,159]/CTSSLCinSSA[,51]
+CTSSLCinSSA$CTR <- CTSSLCinSSA[,159]/CTSSLCinSSA[,53]
+CTSSLCinSSA$PropGirls <- CTSSLCinSSA[,162]/CTSSLCinSSA[,160]
+CTSSLCinSSA$PropSC <- CTSSLCinSSA[,163]/CTSSLCinSSA[,161]
+CTSSLCinSSA$PropST <- CTSSLCinSSA[,164]/CTSSLCinSSA[,161]
+CTSSLCinSSA$PropOBC <- CTSSLCinSSA[,165]/CTSSLCinSSA[,161]
+CTSSLCinSSA$PropMUS <- CTSSLCinSSA[,166]/CTSSLCinSSA[,161]
+
+
+CTSSASSLC<-do.call(data.frame,lapply(CTSSLCinSSA, function(x) replace(x, is.infinite(x),NA)))
+CTSSASSLC <- CTSSASSLC[complete.cases(CTSSASSLC[,159:173]),]
+
+Counts2<-as.data.frame(table(CTSSLCinSSA$dummyt))
+@
+
+<<echo=FALSE, eval=TRUE, results=tex>>=
+
+# PREPARING SSLC DATA
+#FOR SSLC 2014
+#FINDING SCHOOL MEANS 
+#GRAND TOTAL
+CTSSLC14.School.Means <- aggregate(FNR_GRAND_TOTAL_MARKS~STD_SCHOOL_CODE, CTSSLC14, mean, na.rm=TRUE)
+#MATHS
+CTSSLC14.MA <- CTSSLC14[CTSSLC14$NRC_SUBJECT1_SUBJECT_CODE=="81",c("STD_SCHOOL_CODE", "NRC_SUBJECT1_TOTAL_MARKS", "NRC_SUBJECT1_SUBJECT_CODE")]
+CTSSLC14.School.Means.MA <- aggregate(NRC_SUBJECT1_TOTAL_MARKS~STD_SCHOOL_CODE, CTSSLC14.MA, mean, na.rm=TRUE)
+#SCIENCE
+CTSSLC14.SC <- CTSSLC14[CTSSLC14$NRC_SUBJECT2_SUBJECT_CODE=="83",c("STD_SCHOOL_CODE", "NRC_SUBJECT2_TOTAL_MARKS", "NRC_SUBJECT2_SUBJECT_CODE")]
+CTSSLC14.School.Means.SC <- aggregate(NRC_SUBJECT2_TOTAL_MARKS~STD_SCHOOL_CODE, CTSSLC14.SC, mean, na.rm=TRUE)
+#ENGLISH
+CTSSLC14.EN <- CTSSLC14[CTSSLC14$NRC_LANGUAGE2_SUBJECT_CODE=="31",c("STD_SCHOOL_CODE", "NRC_LANGUAGE2_TOTAL_MARKS", "NRC_LANGUAGE2_SUBJECT_CODE")]
+CTSSLC14.School.Means.EN <- aggregate(NRC_LANGUAGE2_TOTAL_MARKS~STD_SCHOOL_CODE, CTSSLC14.EN, mean, na.rm=TRUE)
+
+#MERGING ALL SCHOOL MEAN FILES
+CTSSLC14.School.Means <- merge(CTSSLC14.School.Means, CTSSLC14.School.Means.MA, by=c("STD_SCHOOL_CODE"), all=TRUE)
+
+CTSSLC14.School.Means <- merge(CTSSLC14.School.Means, CTSSLC14.School.Means.SC, by=c("STD_SCHOOL_CODE"), all=TRUE)
+
+CTSSLC14.School.Means <- merge(CTSSLC14.School.Means, CTSSLC14.School.Means.EN, by=c("STD_SCHOOL_CODE"), all=TRUE)
+
+#ADDING NO. OF STUDENTS PER SCHOOL COLUMN
+Freq<-as.data.frame(table(CTSSLC14$STD_SCHOOL_CODE))
+colnames(Freq)<- c("STD_SCHOOL_CODE", "Frequency")
+#Freq<-subset(Freq, STD_SCHOOL_CODE %in% CTSSLC14$STD_SCHOOL_CODE)
+#mergeCT <- merge(CT, Freq, by=c("SCM_SCHOOL_CODE"), all=TRUE)
+#colnames(mergeCT) <- c("STD_SCHOOL_CODE", "SCHCD", "Frequency")
+#CTSSLC14GT <- merge(mergeCT, CTSSLC14ALL.School.Means, by=c("STD_SCHOOL_CODE"), all=TRUE)
+
+#SCHOOL PASS FREQUENCY
+CTSSLC14Pass <-CTSSLC14[CTSSLC14$FNR_FINAL_RESULT=="P",]
+Freq1<-as.data.frame(table(CTSSLC14Pass$STD_SCHOOL_CODE))
+#Freq2<- Freq1[Freq1$Freq!=0,]
+colnames(Freq1)<- c("STD_SCHOOL_CODE", "Pass.Frequency")
+
+
+#MERGE WITH OTHER SSLC SCHOOL MEANS
+CTSSLC14.School.Means <- merge(CTSSLC14.School.Means, Freq, by=c("STD_SCHOOL_CODE"), all=TRUE)
+CTSSLC14.School.Means <- merge(CTSSLC14.School.Means, Freq1, by=c("STD_SCHOOL_CODE"), all=TRUE)
+#SCHOOL PASS PERCENTAGE
+CTSSLC14.School.Means$Pass.Percentage.2014 <- CTSSLC14.School.Means$Pass.Frequency/CTSSLC14.School.Means$Frequency
+
+
+colnames(CTSSLC14.School.Means)[1] <-"SCM_SCHOOL_CODE"
+
+
+# REPEATING THE ABOVE FOR SSLC 2015
+#FINDING SCHOOL MEANS 
+#GRAND TOTAL
+CTSSLC15.School.Means <- aggregate(FNR_GRAND_TOTAL_MARKS~STD_SCHOOL_CODE, CTSSLC15, mean, na.rm=TRUE)
+#CTSSLC15.School.Means <- CTSSLC15.School.Means[complete.cases(CTSSLC15.School.Means),]
+
+#MATHS
+CTSSLC15.MA <- CTSSLC15[CTSSLC15$NRC_SUBJECT1_SUBJECT_CODE=="81",c("STD_SCHOOL_CODE", "NRC_SUBJECT1_TOTAL_MARKS", "NRC_SUBJECT1_SUBJECT_CODE")]
+CTSSLC15.School.Means.MA <- aggregate(NRC_SUBJECT1_TOTAL_MARKS~STD_SCHOOL_CODE, CTSSLC15.MA, mean, na.rm=TRUE)
+#SCIENCE
+
+CTSSLC15.SC <- CTSSLC15[CTSSLC15$NRC_SUBJECT2_SUBJECT_CODE=="83",c("STD_SCHOOL_CODE", "NRC_SUBJECT2_TOTAL_MARKS", "NRC_SUBJECT2_SUBJECT_CODE")]
+CTSSLC15.School.Means.SC <- aggregate(NRC_SUBJECT2_TOTAL_MARKS~STD_SCHOOL_CODE, CTSSLC15.SC, mean, na.rm=TRUE)
+#ENGLISH
+CTSSLC15.EN <- CTSSLC15[CTSSLC15$NRC_LANGUAGE2_SUBJECT_CODE=="31",c("STD_SCHOOL_CODE", "NRC_LANGUAGE2_TOTAL_MARKS", "NRC_LANGUAGE2_SUBJECT_CODE")]
+CTSSLC15.School.Means.EN <- aggregate(NRC_LANGUAGE2_TOTAL_MARKS~STD_SCHOOL_CODE, CTSSLC15.EN, mean, na.rm=TRUE)
+
+#MERGING ALL SCHOOL MEAN FILES
+CTSSLC15.School.Means <- merge(CTSSLC15.School.Means, CTSSLC15.School.Means.MA, by=c("STD_SCHOOL_CODE"), all=TRUE)
+
+CTSSLC15.School.Means <- merge(CTSSLC15.School.Means, CTSSLC15.School.Means.SC, by=c("STD_SCHOOL_CODE"), all=TRUE)
+
+CTSSLC15.School.Means <- merge(CTSSLC15.School.Means, CTSSLC15.School.Means.EN, by=c("STD_SCHOOL_CODE"), all=TRUE)
+
+#ADDING NO. OF STUDENTS PER SCHOOL COLUMN
+#CTSSLC15 <- CTSSLC15[complete.cases(CTSSLC15),]
+
+Freq15<-as.data.frame(table(CTSSLC15$STD_SCHOOL_CODE))
+
+colnames(Freq15)<- c("STD_SCHOOL_CODE", "Frequency2015")
+#Freq<-subset(Freq, STD_SCHOOL_CODE %in% CTSSLC14$STD_SCHOOL_CODE)
+#mergeCT <- merge(CT, Freq, by=c("SCM_SCHOOL_CODE"), all=TRUE)
+#colnames(mergeCT) <- c("STD_SCHOOL_CODE", "SCHCD", "Frequency")
+#CTSSLC14GT <- merge(mergeCT, CTSSLC14ALL.School.Means, by=c("STD_SCHOOL_CODE"), all=TRUE)
+
+#SCHOOL PASS FREQUENCY
+CTSSLC15Pass <-CTSSLC15[CTSSLC15$FNR_FINAL_RESULT=="P",]
+FreqP15<-as.data.frame(table(CTSSLC15Pass$STD_SCHOOL_CODE))
+#Freq2<- Freq1[Freq1$Freq!=0,]
+colnames(FreqP15)<- c("STD_SCHOOL_CODE", "Pass.Frequency2015")
+
+#MERGE WITH OTHER SSLC SCHOOL MEANS
+CTSSLC15.School.Means <- merge(CTSSLC15.School.Means, Freq15, by=c("STD_SCHOOL_CODE"), all=TRUE)
+CTSSLC15.School.Means <- merge(CTSSLC15.School.Means, FreqP15, by=c("STD_SCHOOL_CODE"), all=TRUE)
+
+#CHANGE ALL NAMES TO ADD YEAR
+colnames(CTSSLC15.School.Means) <-c("SCM_SCHOOL_CODE", "GT2015", "MA2015", "SC2015", "EN2015", "Frequency2015", "Pass.Frequency2015")
+
+#SCHOOL PASS PERCENTAGE
+CTSSLC15.School.Means$Pass.Percentage.2015 <- CTSSLC15.School.Means$Pass.Frequency2015/CTSSLC15.School.Means$Frequency2015
+
+
+#MERGING SSA AND SSLC 2014 and 2015
+CTSSASSLC <-merge(CTSSASSLC, CTSSLC15.School.Means, by=c("SCM_SCHOOL_CODE"), all=FALSE)
+CTSSASSLC <-merge(CTSSASSLC, CTSSLC14.School.Means, by=c("SCM_SCHOOL_CODE"), all=FALSE)
+CTSSASSLC<-CTSSASSLC[complete.cases(CTSSASSLC[174:186]),]
+
+#FINAL FILE FOR ANALYSIS
+#write.csv(CTSSASSLC, "CTSSASSLC.csv")
+
+#NOTE OUT OF 1163 SCHOOLS 6 WERE DROPPED AS THEY DID NOT HAVE ENGLISH AS 2ND LANGUAGE - 8 WERE DROPPED AS THEY DID NOT HAVE VALID ENTRIES IN SSA DATA - FINAL LIST OF 1149
+
+@
+
+
+\subsection {Data-sets}
+
+\paragraph*{}We use data from two sources for this study. The State Department of Education maintains database of infrastructure and enrolments for all the schools in the State. This is a comprehensive data with a panel available from 2006 onwards. We take data on academic and physical infrastructure, gender-wise and social-category-wise enrolment for our Treatment and Control Schools from this database.
+\paragraph*{}As an outcome measure we choose to use the SSLC (Secondary School Leaving Certificate) results. This is a standard test which all students in the State have to appear at the end of 10 years of schooling. The test is conducted state-wide by Karnataka Secondary Education Examination Board (KSEEB). We obtained data on exam results for Control and treatment Schools for test conducted in April 2014 and April 2015. While the test is conducted twice each year, almost all students attending regular school academic year appear in the month of April, while the October exam is pre-dominantly taken by students who have to repeat the exam. We get student-level subject-wise marks from this database.
+\paragraph*{}Not all schools in Control and Treatment groups have batches upto class 10th. Out of the total 1000 Treatment Schools only \Sexpr{Counts1[2,2]} schools have Secondary Section (Class 9th and 10th). Out of 823 Control Schools only \Sexpr{Counts1[1,2]} Schools have Secondary Section. Further, it was realised that there is a difference in the method of assigning school codes between the State Education Department data and the KSEEB data. Also some schools may not have any student appearing for SSLC exams in a given year. Further some schools did not have students opting for English as a second language. Thus after taking all these factors into considertion out of the total \Sexpr{Counts1[2,2] + Counts1[1,2]} Control and Treatment Schools which had Secondary Classes, a common set of \Sexpr{nrow(CTSSASSLC)} schools was arrived at.
+
+
+\subsection {Comparing the SSLC Schools in Control and Treatment for Statistical Similarity}
+
+\paragraph*{}In the original experiment design the schools were selected using a multi-stage random selection process. However, as not all schools in the Control and Treatment groups had Class 10th, it was important to check that the subset of schools with Class 10th also has statistical similarity between Control and Treatment groups. We start with a two-sample t-test on some of the School-level variables. The variables that we use are -
+\begin{itemize}
+\item Pupil-Teacher-Ratio (PTR) - This is computed for the entire school as no separate data is available for class 10th. However, this may still be meaningful as it gives some idea of the level of academic and physical infrastructure in the school.
+\item Pupil-Classroom-Ratio (PCR) - This too is computed for the entire school as no separate data is available for class 10th.
+\item Proportion of Girls (PropGirls) - For class 5th to 10th.
+\item Proportion of students from Scheduled Castes (PropSC) - For class 5th to 10th.
+\item Proportion of students from Scheduled Tribes (PropST) - For class 5th to 10th.
+\item Proportion of students from Other Backward Castes (PropOBC) - For class 5th to 10th.
+\item Proportion of students from Muslim community (PropMUS) - For class 5th to 10th.
+\end{itemize}
+
+
+<<echo=FALSE, eval=TRUE, results=tex, pdf=TRUE>>=
+
+#CHECKING IF TWO SAMPLES ARE SIMILAR -
+
+ttestPTR <- t.test(PTR~dummyt, data=CTSSASSLC)
+ttestCTR <- t.test(CTR~dummyt, data=CTSSASSLC)
+ttestPropGirls <- t.test(PropGirls~dummyt, data=CTSSASSLC)
+ttestPropSC <- t.test(PropSC~dummyt, data=CTSSASSLC)
+ttestPropST <- t.test(PropST~dummyt, data=CTSSASSLC)
+ttestPropOBC <- t.test(PropOBC~dummyt, data=CTSSASSLC)
+ttestPropMUS <- t.test(PropMUS~dummyt, data=CTSSASSLC)
+
+tests02 <- list(ttestPTR, ttestCTR, ttestPropGirls, ttestPropSC, ttestPropST, ttestPropOBC, ttestPropMUS)
+
+Tresult02 <-sapply(tests02, function(x) {
+  c(x$estimate[1],
+    x$estimate[2],
+    ci.lower = x$conf.int[1],
+    ci.upper = x$conf.int[2],
+    p.value = x$p.value)
+})
+
+Tresultdf02 <- as.data.frame(Tresult02)
+colnames(Tresultdf02) <- c("PTR", "PCR", "PropGirls", "PropSC", "PropST", "PropOBC", "PropMUS")
+print(xtable(Tresultdf02, caption="Welch Two Sample T-test Results", label="tb:3"),table.placement="!h")
+#knitr::kable(Tresultdf02, digits=2)
+#print(xtable(ttest02, type = "latex", "ttest02.tex"))
+
+#T-TEST ON PROPGIRLS USING ONLY CO-ED SCHOOLS
+
+SCHTY<- CTSSASSLC[c("SCM_SCHOOL_CODE", "dummyt", "SCHTYPE","PropGirls")]
+SCHTY <-SCHTY[SCHTY$SCHTYPE=="Co- Edu.",]
+SCHTY <- SCHTY[complete.cases(SCHTY),]
+
+ttestPropGirls1 <- t.test(PropGirls~dummyt, data=SCHTY)
+
+tests0 <- list(ttestPropGirls1)
+
+Tresult <-sapply(tests0, function(x) {
+  c(x$estimate[1],
+    x$estimate[2],
+    ci.lower = x$conf.int[1],
+    ci.upper = x$conf.int[2],
+    p.value = x$p.value)
+})
+
+Tresultdf <- as.data.frame(Tresult)
+colnames(Tresultdf) <- c("PropGirls1")
+
+@
+
+
+\paragraph*{}The results are shown in Table \ref{tb:3}. It can be seen that the p-value for PropGirls is unrealistically large at \Sexpr{round((Tresultdf02[5,3]),2)}. This may be on account of Schools that are exclusively for boys or girls as it would result in large standard deviation. We, therefore, check for PropGirls only for co-ed schools. There are \Sexpr{nrow(SCHTY)} co-ed schools in the dataset. The two-sample t-test for Proportion of Girls in these co-ed schools gives a p-value of \Sexpr{round((Tresultdf[5,1]),2)} (refer Table \ref{tb:4}). 
+
+<<echo=FALSE, results=tex, include=TRUE, pdf=TRUE>>=
+print(xtable(Tresultdf, caption="Welch Two Sample T-test Results", label="tb:4"), table.placement = "!h")
+#knitr::kable(Tresultdf, digits=2)
+#print(xtable(ttest01, type = "latex", "ttest01.tex"))
+
+@
+
+Similarly we compare the Control and Treatment Schools with class 10 for their performance in the SSLC exam held in April 2014. The two-sample t-test results are given in Table \ref{tb:5}. As can be seen from the table - all variables related to SSLC exam conducted in April, 2014 indicate that the Control and Treatment Schools are statistically similar.
+
+<<echo=FALSE, eval=TRUE, results=tex, pdf=TRUE>>=
+
+# COMPARING TWO SAMPLES ON SSLC RESULTS
+
+ttestFreq2014 <- t.test(Frequency~dummyt, data=CTSSASSLC)
+ttestPass2014 <- t.test(Pass.Percentage.2014~dummyt, data=CTSSASSLC)
+ttestGT2014 <- t.test(FNR_GRAND_TOTAL_MARKS~dummyt, data=CTSSASSLC)
+ttestEN2014 <- t.test(NRC_LANGUAGE2_TOTAL_MARKS~dummyt, data=CTSSASSLC)
+ttestMA2014 <- t.test(NRC_SUBJECT1_TOTAL_MARKS~dummyt, data=CTSSASSLC)
+ttestSC2014 <- t.test(NRC_SUBJECT2_TOTAL_MARKS~dummyt, data=CTSSASSLC)
+
+ttestsSSLC14 <- list(ttestFreq2014, ttestPass2014, ttestGT2014, ttestEN2014, ttestMA2014, ttestSC2014)
+
+TresultSSLC14 <-sapply(ttestsSSLC14, function(x) {
+  c(x$estimate[1],
+    x$estimate[2],
+    ci.lower = x$conf.int[1],
+    ci.upper = x$conf.int[2],
+    p.value = x$p.value)
+})
+
+TresultdfSSLC14 <- as.data.frame(TresultSSLC14)
+colnames(TresultdfSSLC14) <- c("No. of Stu.", "Pass Perc.", "Avg. GT", "Avg. Eng", "Avg. Maths", "Avg. Sci")
+print(xtable(TresultdfSSLC14, caption="Welch Two Sample T-test Results on SSLC Performance", label="tb:5"), table.placement = "!h")
+#knitr::kable(TresultdfSSLC14, digits=2)
+#print(xtable(ttest03, type = "latex", "ttest03.tex"))
+#library(pander)
+#panderOptions('table.split.table', 70)
+#pandoc.table.return(TresultdfSSLC14, #split.tables=panderOptions("table.split.table"))
+
+@
+
+
+\section {Estimation}
+
+\paragraph*{}First we run a basic OLS regression to check the significance of the Treatment dummy with the previous year's (April 2014) scores as explanatory variable to control for basic ability. We use the estimation equation as -
+\begin{equation}\label{eq:5}
+Y_{i,j,2015} = \alpha + \beta_{1}D_{j} + \beta_{2}Y_{i,j,2014} + \epsilon_{ij}
+\end{equation}
+
+where $Y_{i,j,*}$ is the outcome variable for schools $i$ with Treatment status in AY 2014-15 as $j$ and $D_{j}$ is Dummy variable for the treatment status
+
+\paragraph*{}We use School Averages for 2015 exam of Grand-Total, English Language, Maths and Science scores as outcome variables. We also check for impact on School Pass Percentage as one of the outcome variable. We standardize the school average test scores for 2014. 2015 school average test scores are standardized around the respective means of 2014 test scores. The blue curve in the Figure \ref{fig1} plots standardized mean school grand total for 2014 exams while the red curve plots mean school grand total for 2015 centered around mean and standard deviation of 2014 results. The regression results are summarised in Table \ref{tb:6}.
+
+
+
+<<echo=FALSE, eval=TRUE>>=
+
+#STANDARDIZE SCORES FOR 2014 AND 2015 AROUND 2014
+CTSSASSLC$GT2014.st<- scale(CTSSASSLC$FNR_GRAND_TOTAL_MARKS)
+CTSSASSLC$EN2014.st<- scale(CTSSASSLC$NRC_LANGUAGE2_TOTAL_MARKS)
+CTSSASSLC$MA2014.st<- scale(CTSSASSLC$NRC_SUBJECT1_TOTAL_MARKS)
+CTSSASSLC$SC2014.st<- scale(CTSSASSLC$NRC_SUBJECT2_TOTAL_MARKS)
+
+offcenter <- function(df, x, y){
+  center.x<- x
+    for (i in 1:length(x)){
+      center.x[i]<- ((x[i]-mean(y))/sd(y))
+      }
+return(cbind(center.x, df))
+    }
+
+#CHECK IF A NESTED IF CAN BE PUT IN SO THAT NA VALUES FOR ENGLISH LANGUAGE NEED NOT BE LOST FOR OTHER SUBJECTS AS IS THE CASE NOW
+
+CTSSASSLC<-as.data.frame(offcenter(CTSSASSLC, CTSSASSLC$GT2015, CTSSASSLC$FNR_GRAND_TOTAL_MARKS))
+colnames(CTSSASSLC)[1]<-"off.std.GT2015"
+CTSSASSLC<-as.data.frame(offcenter(CTSSASSLC, CTSSASSLC$MA2015, CTSSASSLC$NRC_SUBJECT1_TOTAL_MARKS))
+colnames(CTSSASSLC)[1]<-"off.std.MA2015"
+CTSSASSLC<-as.data.frame(offcenter(CTSSASSLC, CTSSASSLC$SC2015, CTSSASSLC$NRC_SUBJECT2_TOTAL_MARKS))
+colnames(CTSSASSLC)[1]<-"off.std.SC2015"
+CTSSASSLC<-as.data.frame(offcenter(CTSSASSLC, CTSSASSLC$EN2015, CTSSASSLC$NRC_LANGUAGE2_TOTAL_MARKS))
+colnames(CTSSASSLC)[1]<-"off.std.EN2015"
+
+CTSSASSLC$DiffGT<-CTSSASSLC$off.std.GT2015 - CTSSASSLC$GT2014.st
+CTSSASSLC$DiffEN<-CTSSASSLC$off.std.EN2015 - CTSSASSLC$EN2014.st
+CTSSASSLC$DiffMA<-CTSSASSLC$off.std.MA2015 - CTSSASSLC$MA2014.st
+CTSSASSLC$DiffSC<-CTSSASSLC$off.std.SC2015 - CTSSASSLC$SC2014.st
+CTSSASSLC$DiffPP<-CTSSASSLC$Pass.Percentage.2015 - CTSSASSLC$Pass.Percentage.2014
+
+write.csv(CTSSASSLC, "CTSSASSLC1.csv")
+
+@
+
+<<echo=FALSE, fig=TRUE, height=4, width=8, label=fig1>>=
+plot(density(CTSSASSLC$off.std.GT2015), col="red")
+lines(density(CTSSASSLC$GT2014.st), col="blue")
+legend("topright", legend=c("Grand Total 2015", "Grand Total 2014"), fill=c(2,3))
+@
+
+
+
+<<echo=FALSE, eval=TRUE, results=tex, pdf=TRUE>>=
+  
+basicGT <- lm(off.std.GT2015 ~ dummyt + GT2014.st, CTSSASSLC)
+basicEN <- lm(off.std.EN2015 ~ dummyt + EN2014.st, CTSSASSLC)
+basicMA <- lm(off.std.MA2015 ~ dummyt + MA2014.st, CTSSASSLC)
+basicSC <- lm(off.std.SC2015 ~ dummyt + SC2014.st, CTSSASSLC)
+basicpass <- lm(Pass.Percentage.2015 ~ dummyt + Pass.Percentage.2014, CTSSASSLC)
+#require(memisc)
+#basicreg<-mtable("GT"=basicGT,
+#                 "EN"=basicEN,
+#                "MA"=basicMA,
+#                 "SC"=basicSC,
+#                 summary.stats=c("R-squared", "F", "p", "N"))
+#library(pander)
+#pander(basicreg)
+texreg(list(basicGT, basicEN, basicMA, basicSC, basicpass), custom.model.names=c("Total", "English", "Maths", "Science", "Pass"), caption="Basic Regression on Standardized Scores with Control 2014 Results", label="tb:6",float.pos = "!h")
+#star1<-stargazer(basicGT, basicEN, basicMA, basicSC, title="Basic Regression on Standardized Scores with Control 2014 Results")
+@
+
+
+\paragraph*{}Next we control for some school level characteristics such as Pupil-Teacher-Ratio as an indicator of academic infrastructure, Pupil-Classroom-Ratio as indicator of physical infrastructure, Proportion of Girls  and Proportion of students from Scheduled Castes as an indicator of the socio-economic background of students in the school. The co-efficient for PTR and PCR were close to zero in all regressions (not shown here). The results for Proportion of Girls and Proportion of SC is shown in Table \ref{tb:7}.
+
+<<echo=FALSE, results=tex, pdf=TRUE, eval=TRUE>>=
+
+#BASIC REGRESSIONS
+
+basicGTS <- lm(off.std.GT2015 ~ dummyt + GT2014.st + PropSC + PropGirls, CTSSASSLC)
+basicENS <- lm(off.std.EN2015 ~ dummyt + EN2014.st+ PropSC + PropGirls, CTSSASSLC)
+basicMAS <- lm(off.std.MA2015 ~ dummyt + MA2014.st + PropSC + PropGirls, CTSSASSLC)
+basicSCS <- lm(off.std.SC2015 ~ dummyt + SC2014.st + PropSC + PropGirls, CTSSASSLC)
+basicpassS <- lm(Pass.Percentage.2015 ~ dummyt + Pass.Percentage.2014 + PropGirls, CTSSASSLC)
+
+texreg(list(basicGTS, basicENS, basicMAS, basicSCS, basicpassS), custom.model.names=c("Total", "English", "Maths", "Science", "Pass"), caption = "With School Level Controls", label="tb:7", float.pos = "!h")
+#star2<-stargazer(basicGTS, basicENS, basicMAS, basicSCS, basicpassS, title="With School Level Controls")
+
+@
+
+
+\citet{banerjee2007remedying} uses a slightly different specification. The Dependent variable in this case is the improvement in the standardized School Average Marks in 2015 over 2014 exams. This is explained using the same explanatory variables used in Table \ref{tb:6}. The results are given in Table \ref{tb:8}. We also add Controls to this specification (refer Table \ref{tb:9}).
+
+<<echo=FALSE, results=tex, pdf=TRUE, eval=TRUE>>=
+
+#BASIC REGRESSION ON DIFFERENCE IN SCORE
+
+diffGTR <- lm(DiffGT ~ dummyt + GT2014.st, CTSSASSLC)
+diffENR <- lm(DiffEN ~ dummyt + EN2014.st, CTSSASSLC)
+diffMAR <- lm(DiffMA ~ dummyt + MA2014.st, CTSSASSLC)
+diffSCR <- lm(DiffSC ~ dummyt + SC2014.st, CTSSASSLC)
+diffPPR <- lm(DiffPP ~ dummyt + Pass.Percentage.2014, CTSSASSLC)
+
+texreg(list(diffGTR, diffENR, diffMAR, diffSCR, diffPPR), custom.model.names=c("Total", "English", "Maths", "Science", "Pass"), caption="On Difference in 2015 and 2015 scores without School level COntrols", label="tb:8", float.pos = "!h")
+
+@
+
+<<echo=FALSE, results=tex, pdf=TRUE, eval=TRUE>>=
+
+#REGRESSIONS WITH SCHOOL LEVEL CONTROLS ON DIFFERENCE IN SCORE
+
+diffGT <- lm(DiffGT ~ dummyt + GT2014.st + PropSC + PropGirls, CTSSASSLC)
+diffEN <- lm(DiffEN ~ dummyt + EN2014.st + PropSC + PropGirls, CTSSASSLC)
+diffMA <- lm(DiffMA ~ dummyt + MA2014.st + PropSC + PropGirls, CTSSASSLC)
+diffSC <- lm(DiffSC ~ dummyt + SC2014.st + PropSC + PropGirls, CTSSASSLC)
+diffPP <- lm(DiffPP ~ dummyt + Pass.Percentage.2014 + PropGirls, CTSSASSLC)
+
+texreg(list(diffGT, diffEN, diffMA, diffSC, diffPP), custom.model.names=c("Total", "English", "Maths", "Science", "Pass"), caption="On Difference is 2015 and 2014 scores with School Level Controls (AB Specification)", label ="tb:9", float.pos = "!h")
+
+@
+
+
+\paragraph*{}It is also possible that the program has different impact on different students along the distribution depending upon their inbuilt ability. It is quite often seen that the usual classroom teaching is targetted at the high-scoring students and hence low scoring students continue to suffer. It has been seen that impact of such remedial or additional inputs benefit the low scoring students more \citet{banerjee2007remedying}. Since our analysis is at the school level, we look for the impact of the treatment on schools with low scoring students or with low average scores assuming that such schools are more disadvantaged in terms of location, resources and the socio-economic background of students. Ideally the program should benefit such schools more than the ones who already have high average scores in the exams. To check this we run a quantile regression with the standardized school average scores in AY 2015 as the dependent variable and the standardized average school score in AY 2014 as the proxy for base level abilities.  The results are given in Table \ref{tb:9} for average school Grand Total Marks. The Plot in Figure \ref{fig2} compares quantile regression output for basic model i.e. regression of standardized Grand total marks for AY 2015 on Treatment dummy and standardized grand total marks for 2014. As can be seen none of the Treatment dummy co-efficients are significant at any quantile. Table \ref{tb:10}-\ref{tb:12} give the results of similar Quantile Regressions for other subjects.  
+
+
+<<echo=FALSE, eval=TRUE, results=tex, pdf=TRUE>>=
+
+qregGT10 <- rq(off.std.GT2015 ~ dummyt + GT2014.st, CTSSASSLC, tau=0.10)
+qregGT20 <- rq(off.std.GT2015 ~ dummyt + GT2014.st, CTSSASSLC, tau=0.20)
+qregGT30 <- rq(off.std.GT2015 ~ dummyt + GT2014.st, CTSSASSLC, tau=0.30)
+qregGT40 <- rq(off.std.GT2015 ~ dummyt + GT2014.st, CTSSASSLC, tau=0.40)
+qregGT50 <- rq(off.std.GT2015 ~ dummyt + GT2014.st, CTSSASSLC, tau=0.50)
+qregGT60 <- rq(off.std.GT2015 ~ dummyt + GT2014.st, CTSSASSLC, tau=0.60)
+qregGT70 <- rq(off.std.GT2015 ~ dummyt + GT2014.st, CTSSASSLC, tau=0.70)
+qregGT80 <- rq(off.std.GT2015 ~ dummyt + GT2014.st, CTSSASSLC, tau=0.80)
+qregGT90 <- rq(off.std.GT2015 ~ dummyt + GT2014.st, CTSSASSLC, tau=0.90)
+
+#extract(qregGT)
+#qr<-summary(qregGT)
+#latex(qr)
+texreg(list(qregGT10, qregGT20, qregGT30, qregGT40, qregGT50, qregGT60,qregGT70,qregGT80,qregGT90), custom.model.names=c("0.10", "0.20", "0.30", "0.40", "0.50", "0.60", "0.70", "0.80", "0.90"), caption="Quantile Regression on Standardized Grand Totals", label="tb:9", float.pos = "!h")
+#qregGTplot<-summary(qregGT)
+
+@
+
+
+<<echo=FALSE, eval=TRUE, results=tex, pdf=TRUE>>=
+
+qregEN10 <- rq(off.std.EN2015 ~ dummyt + EN2014.st, CTSSASSLC, tau=0.10)
+qregEN20 <- rq(off.std.EN2015 ~ dummyt + EN2014.st, CTSSASSLC, tau=0.20)
+qregEN30 <- rq(off.std.EN2015 ~ dummyt + EN2014.st, CTSSASSLC, tau=0.30)
+qregEN40 <- rq(off.std.EN2015 ~ dummyt + EN2014.st, CTSSASSLC, tau=0.40)
+qregEN50 <- rq(off.std.EN2015 ~ dummyt + EN2014.st, CTSSASSLC, tau=0.50)
+qregEN60 <- rq(off.std.EN2015 ~ dummyt + EN2014.st, CTSSASSLC, tau=0.60)
+qregEN70 <- rq(off.std.EN2015 ~ dummyt + EN2014.st, CTSSASSLC, tau=0.70)
+qregEN80 <- rq(off.std.EN2015 ~ dummyt + EN2014.st, CTSSASSLC, tau=0.80)
+qregEN90 <- rq(off.std.EN2015 ~ dummyt + EN2014.st, CTSSASSLC, tau=0.90)
+
+#extract(qregGT)
+#qr<-summary(qregGT)
+#latex(qr)
+texreg(list(qregEN10, qregEN20, qregEN30, qregEN40, qregEN50, qregEN60,qregEN70,qregEN80,qregEN90), custom.model.names=c("0.10", "0.20", "0.30", "0.40", "0.50", "0.60", "0.70", "0.80", "0.90"), caption="Quantile Regression on Standardized English", label="tb:10", float.pos = "!h")
+#qregGTplot<-summary(qregGT)
+
+@
+
+<<echo=FALSE, eval=TRUE, results=tex, pdf=TRUE>>=
+
+qregMA10 <- rq(off.std.MA2015 ~ dummyt + MA2014.st, CTSSASSLC, tau=0.10)
+qregMA20 <- rq(off.std.MA2015 ~ dummyt + MA2014.st, CTSSASSLC, tau=0.20)
+qregMA30 <- rq(off.std.MA2015 ~ dummyt + MA2014.st, CTSSASSLC, tau=0.30)
+qregMA40 <- rq(off.std.MA2015 ~ dummyt + MA2014.st, CTSSASSLC, tau=0.40)
+qregMA50 <- rq(off.std.MA2015 ~ dummyt + MA2014.st, CTSSASSLC, tau=0.50)
+qregMA60 <- rq(off.std.MA2015 ~ dummyt + MA2014.st, CTSSASSLC, tau=0.60)
+qregMA70 <- rq(off.std.MA2015 ~ dummyt + MA2014.st, CTSSASSLC, tau=0.70)
+qregMA80 <- rq(off.std.MA2015 ~ dummyt + MA2014.st, CTSSASSLC, tau=0.80)
+qregMA90 <- rq(off.std.MA2015 ~ dummyt + MA2014.st, CTSSASSLC, tau=0.90)
+
+#extract(qregGT)
+#qr<-summary(qregGT)
+#latex(qr)
+texreg(list(qregMA10, qregMA20, qregMA30, qregMA40, qregMA50, qregMA60,qregMA70,qregMA80,qregGT90), custom.model.names=c("0.10", "0.20", "0.30", "0.40", "0.50", "0.60", "0.70", "0.80", "0.90"), caption="Quantile Regression on Standardized Maths", label="tb:11", float.pos = "!h")
+#qregGTplot<-summary(qregGT)
+
+@
+
+<<echo=FALSE, eval=TRUE, results=tex, pdf=TRUE>>=
+
+qregSC10 <- rq(off.std.SC2015 ~ dummyt + SC2014.st, CTSSASSLC, tau=0.10)
+qregSC20 <- rq(off.std.SC2015 ~ dummyt + SC2014.st, CTSSASSLC, tau=0.20)
+qregSC30 <- rq(off.std.SC2015 ~ dummyt + SC2014.st, CTSSASSLC, tau=0.30)
+qregSC40 <- rq(off.std.SC2015 ~ dummyt + SC2014.st, CTSSASSLC, tau=0.40)
+qregSC50 <- rq(off.std.SC2015 ~ dummyt + SC2014.st, CTSSASSLC, tau=0.50)
+qregSC60 <- rq(off.std.SC2015 ~ dummyt + SC2014.st, CTSSASSLC, tau=0.60)
+qregSC70 <- rq(off.std.SC2015 ~ dummyt + SC2014.st, CTSSASSLC, tau=0.70)
+qregSC80 <- rq(off.std.SC2015 ~ dummyt + SC2014.st, CTSSASSLC, tau=0.80)
+qregSC90 <- rq(off.std.SC2015 ~ dummyt + SC2014.st, CTSSASSLC, tau=0.90)
+
+#extract(qregGT)
+#qr<-summary(qregGT)
+#latex(qr)
+texreg(list(qregSC10, qregSC20, qregSC30, qregSC40, qregSC50, qregSC60,qregSC70,qregSC80,qregSC90), custom.model.names=c("0.10", "0.20", "0.30", "0.40", "0.50", "0.60", "0.70", "0.80", "0.90"), caption="Quantile Regression on Standardized Science", label="tb:12", float.pos = "!h")
+#qregGTplot<-summary(qregGT)
+#plot(qregGTplot)
+
+@
+
+\section{Discussion}
+
+The Project went fully operational in the month of November, 2014. Typically, the students of Class 10 complete their syllabus and go on a study leave from the end of January. This effectively, their exposure to the program was for a ere period of 3 months. One has to also take into consideration that the program as such was not designed for students to excel in an exam like the SSLC exam as it requires a different approach emphasizing to some extent rote learning. The program followed a slightly different pedagogy that focussed on developing the students' interest and understanding of the subject. Of course, this is expected to help the student in the standard tests as well like the SSLC. Another important point is that with 10 years of schooling the students in Class 10 are used to a certain pedagogical method. It may be difficult for them to adjust to a new style immediately in the final year. It is expected that the students in lower classes would tune themselves more readily to the new technique and will benefit the most.
+
+\paragraph*{}It may therefore not be fair to comment on the success or failure of the program solely based on evaluation of Class 10 batch performance in the SSLC results. Nevertheless, the estimations give some important pointers as to the direction of the impact. The simple OLS regressions give a positive but non-significant coefficient for the treatment dummy. The effect size ranges from $0.01$ to $0.06$ with a three month of treatment. 
+
+\paragraph*{}But the most important impact of the treatment is seen in the quanitle regressions. The effect of the Treatment is different across subjects and is also different across various quantiles. The treatment effect seems to peak around the median. As can be seen from Tables \ref{tb:10} and \ref{tb:11} for English and Maths, schools in the 60th percentile seem to get maximum benefit. Similarly from Table \ref{ref:12} for science, it can be seen that schools from 30th to 60th percentile seem to get the maximum benefit. This seems to be inline with our objective of assisting schools with low performance to improve. \citet{banerjee2013expanding} mentions that the size of treatment effects in such cases of $0.1$ would be a small effect while an effect size of $0.3$ would be a large effect. In the Balasakhi program \citet{banerjee2007remedying} have got an effect size of around $0.3$ after a two year of intervention. Considering this, the effect size greater than $0.1$ seen in the quantile regressions for quite a few quantiles with three months of treatment looks reasonable. (CHECK IF ANY PAPER HAD CONSIDERED INTERVENTION IN SCIENCE)
+
+\paragraph*{}Another point to note is that the treatment effect is subdued when we consider Grand Total marks whih would include marks from 3 other subjects apart from the ones for which treatment was offered. The effect is more pronounced when we consider marks in subjects in which the treatment was actually given.  
+
+%It may be interesting to check which are these schools and how they perform in terms of infrastructure and other parameters
+
+%Also check how treatment schools do in subjects other than those in which treatment was given.
+
+\section{Conclusion}
+
+Thus, overall, while it may still be a bit too pre-mature to look for the impact of the intervention, the preliminary results as noted above do show that the impact is in the right direction. Further, the quantile regressions show that the Intervention is making an impact among the right strata of the schools i.e. those which are in the middle range of the scoring hierarchy. The detailed test results conducted under the project would give far richer data to analyse the impact across grades, gender and socio-economic background of the students. This would be a far meaningful analysis , than what is presented here. Nevertheless, the present paper shows that the project is going in the right direction. Also, in case the long term results are satisfactory, we may have found the optimal way of using ICT in school education.
+
+
+
+%Summary arguments - Short span of about 3 months - Hence very little impact - But overall impact positive - impact different across quartiles. Students in the mid range benefited most - benefit most in science and comparatively less in english and maths.
+
+%Project seems to be serving its objective - AY 2015-16 results awaited as the treatment ran for the whole academic year. Also data on standard tests for all classes would be available that would enaable us to tract treatment effect at the student lavel. The impact f gender and social category can be further delineated.. 
+
+
+\bibliographystyle{plainnat}
+\bibliography{Test2}
+
+\end{document}
